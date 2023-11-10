@@ -1,5 +1,4 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+# This workflow will run our tests and lint our code
 
 name: Node.js Package
 
@@ -14,6 +13,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm lint
-      - run: npm test
+      - run: npm run ci
+      - run: npm run lint
+      - run: npm run test
