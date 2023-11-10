@@ -18,18 +18,17 @@
           <USelect v-model="state.sentiment" :options="sentiments" />
         </UFormGroup>
 
-        <UButton type="submit"> Submit </UButton>
+        <UButton class="mt-2 justify-end" type="submit"> Submit </UButton>
       </UForm>
     </UCard>
   </div>
 </template>
 
 <script setup lang="ts">
+import { sentiments } from "@/utils/sentiment"
 //  TODO use zod here to validate the form before sending if we have time
 import { reactive } from "vue"
 import moment from "moment"
-
-const sentiments = ["POSITIVE", "NEGATIVE", "NEUTRAL"]
 
 // We may need to change the default values here and types strings is odd, but for simplicity might make sense
 const state = reactive<{ name: string; email: string; feedbackText: string; sentiment: string }>({

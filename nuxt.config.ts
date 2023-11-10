@@ -5,7 +5,9 @@ export default defineNuxtConfig({
   nitro: {
     preset: "firebase",
     firebase: { nodeVersion: "18", gen: 2, httpsOptions: { region: "us-central1", maxInstances: 3 } }
+  },
+  routeRules: {
+    // Homepage pre-rendered at build time
+    "/": { prerender: true }
   }
 })
-
-// https://us-central1-feedback-management-404622.cloudfunctions.net/feedback
