@@ -13,9 +13,11 @@ npm install
 npm run dev
 ```
 
+To get/send data locally you will need to run the firebase setup, which I outline below:
+
 ### For Deploying To Firbase
 
-You will need to make sure your directory is setup for your firebase account. You will need to have firebase-tools installed globally and run firebase login in this directory. Make sure to create a new project in firebase as well as make a web-app in that project so you can get the firebaseconfig
+You will need to make sure your directory is setup for your firebase account. You will need to have firebase-tools installed globally and run firebase login in this directory. Make sure to create a new project in firebase as well as make a web-app in that project so you can get the firebaseconfig. You will also want to setup a firestore db with collection: `feedback`, and in your collection rules use the default but change the `false` to `true`.
 
 ```bash
 firebase login
@@ -28,7 +30,7 @@ and
 
 and
 
-firebaseConfig = { YOUR FIREBASE CONFIG HERE } // In server/lib/firebase.ts
+const firebaseConfig = { YOUR FIREBASE CONFIG HERE } // In server/lib/firebase.ts
 ```
 
 Finally to deploy you can just run
@@ -65,7 +67,7 @@ You can run the coverage reports:
 npm run coverage
 ```
 
-I only tested the frontend as I was unable to figure out how to test nuxt backend functions. If this was on GCP or AWS I could test those more easily outside of nuxt, however without knowing nuxt I wasn't able to figure out how to test that in a few hours, the prebuilt composables were strange to setup for testing.
+I only added unit testing to the frontend as I was unable to figure out how to test nuxt backend functions. If this was on GCP or AWS I could test those more easily outside of nuxt, however without knowing nuxt I wasn't able to figure out how to test that in a few hours, the prebuilt composables were strange to setup for testing.
 
 ## File Structure
 
@@ -84,6 +86,7 @@ Our SubmitForm.vue and ViewFeedbackTable.vue were pulled out as component for tw
 │   ├── feedback
 │       ├── Submit.vue //  This page displays our SubmitForm.vue and handles posting our feedback to the DB
 │       └── View.vue // This page displays our ViewFeedbackTable.vue and handles getting our feedback from the DB
+│   ├── index.vue // This is our home page which is rendered with SSR, other pages are just default
 ├── server
 │   ├── api
 │       ├── feedback.get.ts // This is our api route to get feedback
@@ -102,7 +105,7 @@ Our SubmitForm.vue and ViewFeedbackTable.vue were pulled out as component for tw
 1. Nuxt UI
    - This is used to give me some basic components, the cards, table, input fields ect
 2. TailwindCss
-   - I used this to improve the look of the app rather than boostrap
+   - I used this to improve the look of the app
 3. Zod
    - Zod is a excellent runtime validation tool for JS/TS. I used it for our form submissions as it integrated nicely with the Nuxt UI form group but I use zod in my own projects for all things validation. Zod mixes TS types with type inference and runtime type checking and can't be beat.
 
