@@ -29,6 +29,24 @@ This application is hosted on Firebase and the Backend is also on Firebase. Whil
 
 This project uses the hosting service and firestore from firebase. There is a Firebase cloud function which is used to serve the application which you can see in the firebase.json file. Otherwise we are just using the Nuxt App as a Full Stack application using the Nitro Server. API calls go through our server/api routes which talk directly to our firestore database.
 
+## Testing
+
+I used Vitest for testing. Setting up Jest was a pain and the reccomended way to test nuxt was with vitest. Vitest is also faster to test with and is all around a better DX in my opinion.
+
+You can run the unit tests with:
+
+```bash
+npm run test
+```
+
+You can run the coverage reports:
+
+```bash
+npm run coverage
+```
+
+I only tested the frontend as I was unable to figure out how to test nuxt backend functions. If this was on GCP or AWS I could test those more easily outside of nuxt, however without knowing nuxt I was able to figure out how to test that in a few hours, the prebuilt composables were strange to setup for testing.
+
 ## Other Tech Used
 
 1. Nuxt UI

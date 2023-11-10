@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 import { shallowMount } from "@vue/test-utils"
 import SubmitForm from "../components/SubmitForm.vue"
+import moment from "moment"
 
 let wrapper: any
 describe("Submit", async () => {
@@ -25,5 +26,19 @@ describe("Submit", async () => {
     await wrapper.vm.$nextTick()
     expect(submitButton).toHaveBeenCalled()
     expect(wrapper.emitted("submit")).toBeTruthy()
+  })
+
+  it("should construct our id and timestamp on submit", async () => {
+    wrapper.vm.state = {
+      name: "Donald Duck",
+      email: "testing123@gmail.com",
+      feedbackText: "This is a test comment",
+      sentiment: "positive"
+    }
+    wrapper.vm.onSubmit()
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted("submit")[0][0].id).toHaveLength(36)
+    expect(wrapper.emitted("submit")[0][0].timestamp).toBeDefined()
+    expect(wrapper.emitted("submit")[0][0].timestamp).toHaveLength(24)
   })
 })

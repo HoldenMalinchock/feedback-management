@@ -32,6 +32,7 @@ import { z } from "zod"
 
 const emit = defineEmits(["submit"])
 
+/* c8 ignore start */
 const schema = z.object({
   name: z.string().min(2, "Must be at least 2 characters"),
   email: z.string().email("Invalid email"),
@@ -43,6 +44,7 @@ const schema = z.object({
       message: "Must select a valid sentiment"
     })
 })
+/* c8 ignore end */
 
 const sentiments = ["POSITIVE", "NEGATIVE", "NEUTRAL"]
 
