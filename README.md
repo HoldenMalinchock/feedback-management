@@ -13,7 +13,8 @@ npm run build # Just to make sure the server components are built just fine
 npm run dev
 ```
 
-If npm run dev is causing you issues related to firebase-functions not being installed, run this code:
+If you are trying to deploy this project to your own firebase instance please run this if you get this error:
+Cannot find package 'firebase-functions' imported from
 
 ```bash
 # npm
