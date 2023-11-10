@@ -5,6 +5,9 @@ export default defineEventHandler(async (event) => {
     const docs = await getFeedbackEntries("feedback" as string, query.sentiment as string)
     return { result: docs }
   } catch (error: any) {
-    return { result: [], error: error.message }
+    throw createError({
+      statusCode: 400,
+      statusMessage: error
+    })
   }
 })

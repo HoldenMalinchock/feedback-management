@@ -1,8 +1,8 @@
 <template>
   <div class="flex justify-center mt-16">
-    <UCard class="">
+    <UCard class="mx-8">
       <UFormGroup label="Filter Sentiment" class="max-w-xs mb-8">
-        <USelect v-model="sentiment" :options="sentiments" />
+        <USelect v-model="sentiment" :options="sentimentOptions" />
       </UFormGroup>
       <UTable :rows="feedback.result" :columns="columns" />
     </UCard>
@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { sentiments } from "@/utils/sentiment"
+const sentimentOptions = [...sentiments, ""]
 const columns = [
   {
     key: "id",

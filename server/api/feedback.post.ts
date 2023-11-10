@@ -5,6 +5,9 @@ export default defineEventHandler(async (event) => {
     const docs = await createFeedback("feedback" as string, body)
     return { result: docs }
   } catch (error: any) {
-    return { result: [], error: error.message }
+    throw createError({
+      statusCode: 400,
+      statusMessage: error
+    })
   }
 })
