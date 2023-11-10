@@ -6,7 +6,7 @@ export const schema = z.object({
   feedbackText: z.string().min(10, "Must be at least 10 characters").max(245, "Must be less than 245 characters"),
   sentiment: z
     .string()
-    .nonempty("Must select a sentiment")
+    .min(1, "Must select a sentiment")
     .refine((val: string) => sentiments.includes(val), {
       message: "Must select a valid sentiment"
     })
