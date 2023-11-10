@@ -32,6 +32,7 @@ import { z } from "zod"
 
 const emit = defineEmits(["submit"])
 
+// We can ignore the coverage here since this is validated by zod in the Nuxt UI component
 /* c8 ignore start */
 const schema = z.object({
   name: z.string().min(2, "Must be at least 2 characters"),

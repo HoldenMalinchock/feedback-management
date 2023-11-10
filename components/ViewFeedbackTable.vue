@@ -39,7 +39,9 @@ const columns = [
 ]
 
 defineProps<{
-  feedback: { result: any }
+  feedback: {
+    result: { id: string; name: string; email: string; feedbackText: string; sentiment: string; timestamp: string }[]
+  }
 }>()
 
 const emit = defineEmits(["update:sentiment"])

@@ -67,6 +67,36 @@ npm run coverage
 
 I only tested the frontend as I was unable to figure out how to test nuxt backend functions. If this was on GCP or AWS I could test those more easily outside of nuxt, however without knowing nuxt I wasn't able to figure out how to test that in a few hours, the prebuilt composables were strange to setup for testing.
 
+## File Structure
+
+Our SubmitForm.vue and ViewFeedbackTable.vue were pulled out as component for two reasons:
+
+1. For Testing we could isolate the useFetch()
+2. To show composition api usage with props/emiting and proper vue techniques
+
+```bash
+.
+├── components
+│   ├── Header.vue // This is the header for the application
+│   ├── SubmitForm.vue // This is our Form for creating feedback
+│   └── ViewFeedbackTable.vue // This is our table for viewing feedback
+├── pages
+│   ├── feedback
+│       ├── Submit.vue //  This page displays our SubmitForm.vue and handles posting our feedback to the DB
+│       └── View.vue // This page displays our ViewFeedbackTable.vue and handles getting our feedback from the DB
+├── server
+│   ├── api
+│       ├── feedback.get.ts // This is our api route to get feedback
+│       └── feedback.post.ts // This is our api route to send feedback
+│   ├── lib
+│       ├── firebase.ts // This is our firebase config to connect
+│       └── firestore.ts // These are our functions to interact with the firestore DB
+```
+
+## Architecture
+
+![alt text](./readme-images/Feedback-Management-Arch.png)
+
 ## Other Tech Used
 
 1. Nuxt UI
