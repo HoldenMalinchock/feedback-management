@@ -29,7 +29,7 @@
 import { reactive } from "vue"
 import moment from "moment"
 
-const sentiments = ["postive", "negative", "neutral"]
+const sentiments = ["POSITIVE", "NEGATIVE", "NEUTRAL"]
 
 // We may need to change the default values here and types strings is odd, but for simplicity might make sense
 const state = reactive<{ name: string; email: string; feedbackText: string; sentiment: string }>({
@@ -46,5 +46,6 @@ const onSubmit = () => {
   const timestamp = moment().toISOString()
   const objToSend = Object.assign({}, state, { id, timestamp })
   console.log(objToSend)
+  useFetch("/api/feedback", { method: "POST", body: JSON.stringify(objToSend) })
 }
 </script>
