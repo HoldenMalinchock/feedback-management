@@ -2,6 +2,8 @@
 
 You can view the website globally [here](https://feedback-management-92e11.web.app)
 
+Using the application is fairly simple. I kept it easy to use. Using the Navbar at the top you can navigate between our 3 pages. Submit feedback lets you create new feedback, and View Feedback lets you see the list of feedback. Viewing feedback is filterable on the sentiment and it is filtered on the server side via new requests not locally.
+
 ### For Running locally
 
 ```bash
